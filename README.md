@@ -1,8 +1,12 @@
 # Deep ANPR
 
-Using neural networks to build an automatic number plate recognition system.
-See [this blog post](http://matthewearl.github.io/2016/05/06/cnn-anpr/) for an
-explanation.
+The work is based on Matthew Earl's deep_anpr [repository](https://github.com/matthewearl/deep-anpr) .Do follow his [blog post] (http://matthewearl.github.io/2016/05/06/cnn-anpr/)to get an overview how he designed the sysytem.
+
+Here we are using CNN based sliding window approach to build an automatic number plate recognition system.The system performs well on standard number plates used in countries like UK but fails to achieve decent results on Indian Number plates.
+
+Following is a result of the model on an Indian Number Plate:
+
+Another shortcoming with this model is that , the model has been designed based on the assumption of all the  number plates having 10 digits (7 digits in Matt Earls), which leads to error for recognition of number plates which don't have 10 digits.
 
 **Note: This is an experimental project and is incomplete in a number of ways,
 if you're looking for a practical number plate recognition system this project
