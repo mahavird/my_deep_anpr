@@ -1,6 +1,7 @@
 # Deep ANPR
 
-The work is based on Matthew Earl's deep_anpr [repository](https://github.com/matthewearl/deep-anpr) .Do follow his [blog post] (http://matthewearl.github.io/2016/05/06/cnn-anpr/) to get an overview how he designed the sysytem.
+The work is based on Matthew Earl's deep_anpr [repository](https://github.com/matthewearl/deep-anpr).
+Do follow his [blog post](http://matthewearl.github.io/2016/05/06/cnn-anpr/) to get an overview how he designed the sysytem.
 
 Here we are using CNN based sliding window approach to build an automatic number plate recognition system.The system performs well on standard number plates used in countries like UK but fails to achieve decent results on Indian Number plates.
 
