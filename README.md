@@ -33,6 +33,7 @@ Usage is as follows:
    take around 100,000 batches to converge. When you're satisfied that the
    network has learned enough press `Ctrl+C` and the process will write the
    weights to `weights.npz` and return.
+   (Google Drive link for the [weights.npz](https://drive.google.com/file/d/1ZArKaR2HfY_319A7WUAVRSU7KO8E5klE/view?usp=sharing))
 
 4. `./detect.py in.jpg weights.npz out.jpg`: Detect number plates in an image.
 
