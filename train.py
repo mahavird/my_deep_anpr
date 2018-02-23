@@ -63,8 +63,8 @@ def code_to_vec(p, code):
 def read_data(img_glob):
     for fname in sorted(glob.glob(img_glob)):
         im = cv2.imread(fname)[:, :, 0].astype(numpy.float32) / 255.
-        code = fname.split("/")[1][9:16]
-        p = fname.split("/")[1][17] == '1'
+        code = fname.split("/")[1][9:19]
+        p = fname.split("/")[1][20] == '1'
         yield im, code_to_vec(p, code)
 
 
@@ -125,20 +125,20 @@ def read_batches(batch_size):
 def get_loss(y, y_):
     # Calculate the loss from digits being incorrect.  Don't count loss from
     # digits that are in non-present plates.
-    digits_loss = tf.nn.softmax_cross_entropy_with_logits(logits = 
-                                          tf.reshape(y[:, 1:],
+    digits_loss = tf.nn.softmax_cross_entropy_with_logits(
+                                          logits=tf.reshape(y[:, 1:],
                                                      [-1, len(common.CHARS)]),
-                                          labels = tf.reshape(y_[:, 1:],
+                                          labels=tf.reshape(y_[:, 1:],
                                                      [-1, len(common.CHARS)]))
-    digits_loss = tf.reshape(digits_loss, [-1, 10])
+    digits_loss = tf.reshape(digits_loss, [-1, 10]) #7 changed to 10
     digits_loss = tf.reduce_sum(digits_loss, 1)
     digits_loss *= (y_[:, 0] != 0)
     digits_loss = tf.reduce_sum(digits_loss)
 
     # Calculate the loss from presence indicator being wrong.
-    presence_loss = tf.nn.sigmoid_cross_entropy_with_logits(logits =
-                                                          y[:, :1], labels=y_[:, :1])
-    presence_loss = 10 * tf.reduce_sum(presence_loss)
+    presence_loss = tf.nn.sigmoid_cross_entropy_with_logits(
+                                                          logits=y[:, :1], labels=y_[:, :1])
+    presence_loss = 10 * tf.reduce_sum(presence_loss) # 7 changed to 10
 
     return digits_loss, presence_loss, digits_loss + presence_loss
 
@@ -169,13 +169,13 @@ def train(learn_rate, report_steps, batch_size, initial_weights=None):
     """
     x, y, params = model.get_training_model()
 
-    y_ = tf.placeholder(tf.float32, [None, 10 * len(common.CHARS) + 1])
+    y_ = tf.placeholder(tf.float32, [None, 10 * len(common.CHARS) + 1]) #7 changed to 10
 
     digits_loss, presence_loss, loss = get_loss(y, y_)
     train_step = tf.train.AdamOptimizer(learn_rate).minimize(loss)
 
-    best = tf.argmax(tf.reshape(y[:, 1:], [-1, 10, len(common.CHARS)]), 2)
-    correct = tf.argmax(tf.reshape(y_[:, 1:], [-1, 10, len(common.CHARS)]), 2)
+    best = tf.argmax(tf.reshape(y[:, 1:], [-1, 10, len(common.CHARS)]), 2) # 7 changed to 10
+    correct = tf.argmax(tf.reshape(y_[:, 1:], [-1, 10, len(common.CHARS)]), 2) #7 changed to 10
 
     if initial_weights is not None:
         assert len(params) == len(initial_weights)
@@ -202,12 +202,14 @@ def train(learn_rate, report_steps, batch_size, initial_weights=None):
                                               r[3] < 0.5)))
         r_short = (r[0][:190], r[1][:190], r[2][:190], r[3][:190])
         for b, c, pb, pc in zip(*r_short):
-            print ("{} {} <-> {} {}".format(vec_to_plate(c), pc,
+            #print "{} {} <-> {} {}".format(vec_to_plate(c), pc,
+                                           #vec_to_plate(b), float(pb)) # print command needs to be changed according to python3
+                print ("{} {} <-> {} {}".format(vec_to_plate(c), pc,
                                            vec_to_plate(b), float(pb)))
         num_p_correct = numpy.sum(r[2] == r[3])
 
         print ("B{:3d} {:2.02f}% {:02.02f}% loss: {} "
-               "(digits: {}, presence: {}) |{}|").format(
+               "(digits: {}, presence: {}) |{}|".format(
             batch_idx,
             100. * num_correct / (len(r[0])),
             100. * num_p_correct / len(r[2]),
@@ -215,7 +217,7 @@ def train(learn_rate, report_steps, batch_size, initial_weights=None):
             r[4],
             r[5],
             "".join("X "[numpy.array_equal(b, c) or (not pb and not pc)]
-                                           for b, c, pb, pc in zip(*r_short)))
+                                           for b, c, pb, pc in zip(*r_short))))
 
     def do_batch():
         sess.run(train_step,
