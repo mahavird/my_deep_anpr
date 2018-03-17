@@ -43,6 +43,19 @@ The project has the following dependencies:
 * OpenCV
 * NumPy
 
+If you directly want to see the results on a 10 digit license plate:
+
+1. git clone https://github.com/mahavird/my_deep_anpr.git
+
+2. To download the weights.npz use following command:
+python snippet.py 1ZArKaR2HfY_319A7WUAVRSU7KO8E5klE /home/mahavircingular/
+my_deep_anpr/weights.npz
+
+Do remember that the above file needs to be run with python2
+Replace the destination folder with your destination folder(In my case it is /home/mahavircingular/my_deep_anpr/weights.npz )
+
+3.python detect.py in.jpg weights.npz out.jpg
+
 Different typefaces can be put in `fonts/` in order to match different type
 faces.  With a large enough variety the network will learn to generalize and
 will match as yet unseen typefaces. See
