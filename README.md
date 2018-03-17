@@ -46,7 +46,7 @@ we can talk through the potential solution.
 * Using a python virtual environment is recommended.
 * Code is based on python3 
 * [TensorFlow](https://tensorflow.org) (TF Version 1.0.1, cuda 8.0, cudnn 5.0)
-* OpenCV (Easy install pip install opencv-python)
+* OpenCV (Easy install: `pip install opencv-python`)
 * NumPy
 
 # If you directly want to see the results on a 10 digit license plate,do following:
