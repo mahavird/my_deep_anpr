@@ -22,7 +22,7 @@ enhancements on the Issues page to help make this project more practical.
 Please comment on the relevant issue if you plan on making an enhancement and
 we can talk through the potential solution.
 
-#Usage is as follows:
+# Usage is as follows:
 
 1. `./extractbgs.py SUN397.tar.gz`: Extract ~3GB of background images from the [SUN database](http://groups.csail.mit.edu/vision/SUN/)
    into `bgs/`. (`bgs/` must not already exist.) The tar file (36GB) can be [downloaded here](http://vision.princeton.edu/projects/2010/SUN/SUN397.tar.gz).
@@ -41,7 +41,7 @@ we can talk through the potential solution.
 
 4. `./detect.py in.jpg weights.npz out.jpg`: Detect number plates in an image.
 
-#The project has the following dependencies:
+# The project has the following dependencies:
 
 * Using a python virtual environment is recommended.
 * Code is based on python3 
@@ -49,7 +49,7 @@ we can talk through the potential solution.
 * OpenCV (Easy install pip install opencv-python)
 * NumPy
 
-#If you directly want to see the results on a 10 digit license plate:
+# If you directly want to see the results on a 10 digit license plate,do following:
 
 1. git clone https://github.com/mahavird/my_deep_anpr.git
 
