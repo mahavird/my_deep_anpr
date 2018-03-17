@@ -1,7 +1,7 @@
 # My Deep ANPR
 
 
-The work is based on Matthew Earl's [repository](https://github.com/matthewearl/deep-anpr).
+The work is based on Matthew Earl's [repository](https://github.com/matthewearl/deep-anpr).  
 Do follow his [blog post](http://matthewearl.github.io/2016/05/06/cnn-anpr/) to get an overview how he designed the sysytem.
 
 
@@ -53,10 +53,10 @@ we can talk through the potential solution.
 
 1. `git clone https://github.com/mahavird/my_deep_anpr.git`
 
-2. To download the weights.npz use following command:
+2. To download the weights.npz use following command:  
 `python gdrivedownload.py 1ZArKaR2HfY_319A7WUAVRSU7KO8E5klE /home/mahavircingular/my_deep_anpr/weights.npz`
 
 Replace the destination folder with your destination folder(In my case it is `/home/mahavircingular/my_deep_anpr/weights.npz` )
 
-Finally see the output in out.jpg
+Finally see the output in out.jpg  
 3. `python detect.py in.jpg weights.npz out.jpg`
