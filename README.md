@@ -51,12 +51,12 @@ we can talk through the potential solution.
 
 # If you directly want to see the results on a 10 digit license plate,do following:
 
-1. git clone https://github.com/mahavird/my_deep_anpr.git UN3
+1. `git clone https://github.com/mahavird/my_deep_anpr.git`
 
 2. To download the weights.npz use following command:
-python gdrivedownload.py 1ZArKaR2HfY_319A7WUAVRSU7KO8E5klE /home/mahavircingular/my_deep_anpr/weights.npz
+`python gdrivedownload.py 1ZArKaR2HfY_319A7WUAVRSU7KO8E5klE /home/mahavircingular/my_deep_anpr/weights.npz`
 
-Replace the destination folder with your destination folder(In my case it is /home/mahavircingular/my_deep_anpr/weights.npz )
+Replace the destination folder with your destination folder(In my case it is `/home/mahavircingular/my_deep_anpr/weights.npz` )
 
 Finally see the output in out.jpg
-3.python detect.py in.jpg weights.npz out.jpg
+3. `python detect.py in.jpg weights.npz out.jpg`
