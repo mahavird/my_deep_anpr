@@ -39,8 +39,12 @@ Usage is as follows:
 
 The project has the following dependencies:
 
-* [TensorFlow](https://tensorflow.org)
-* OpenCV
+Using python virtual environment is recommended.
+Code is based on python3 (leaving the gdrivedownload.py)
+
+
+* [TensorFlow](https://tensorflow.org) (TF Version 1.0.1, cuda 8.0, cudnn 5.0)
+* OpenCV (Easy install pip install opencv-python)
 * NumPy
 
 If you directly want to see the results on a 10 digit license plate:
